@@ -59,28 +59,28 @@ export default function Body({ children }: { children: ReactNode }) {
 
                         <ul className="menu-links">
                             <li className="nav-link">
-                                <a href="../page1_home/index.html">
+                                <a href="/">
                                     <i className='bx bx-home-alt icon' ></i>
                                     <span className="text nav-text">Home</span>
                                 </a>
                             </li>
 
                             <li className="nav-link">
-                                <a href="../page2_text/index.html">
+                                <a href="/text">
                                     <i className="bx bx-pencil icon" ></i>
                                     <span className="text nav-text">Text</span>
                                 </a>
                             </li>
 
                             <li className="nav-link">
-                                <a href="../page3_image/index.html">
+                                <a href="/image">
                                     <i className='bx bx-image icon'></i>
                                     <span className="text nav-text">Image</span>
                                 </a>
                             </li>
 
                             <li className="nav-link">
-                                <a href="../page4_video/index.html">
+                                <a href="/video">
                                     <i className='bx bx-video icon' ></i>
                                     <span className="text nav-text">Video</span>
                                 </a>

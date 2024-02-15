@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Body from "./body";
+import Body from "./Body";
 import { useState } from "react";
 
 export const metadata: Metadata = {
