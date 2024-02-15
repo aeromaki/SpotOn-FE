@@ -1,38 +1,11 @@
 "use client";
 
 import "./style.css";
-import Image from "next/image";
-import Sidebar from "../body";
+import ProductList from "../products/ProductList";
 import React, { useCallback, useState, useRef } from "react";
 import axios from "axios";
 
 const server = "http://165.132.46.86:32073";
-
-type ProductInfo = {
-    productName: string,
-    productImage: string
-}
-
-function ProductBlock(productInfo: ProductInfo) {
-    return (
-        <div className="product" key={productInfo.productImage}>
-            <img
-                src={server + productInfo.productImage}
-                alt="product image"
-
-            />
-            <h2>{productInfo.productName}</h2>
-        </div>
-    )
-}
-
-function ProductList({ productList }: { productList: ProductInfo[] }) {
-    return (
-        <>
-            {productList.map(ProductBlock)}
-        </>
-    )
-}
 
 export default function Page() {
     const [loadingPageDisplay, setLoadingPageDisplay] = useState("none");

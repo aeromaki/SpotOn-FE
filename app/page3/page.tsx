@@ -1,6 +1,7 @@
 "use client";
 
 import "./style.css";
+import ProductList from "../products/ProductList";
 import React, { useCallback, useState, useRef } from "react";
 import axios from "axios";
 
@@ -12,6 +13,11 @@ export default function Page() {
     const searchInputRef = useRef<HTMLInputElement>(null);
 
     const [buttonDisplay, setButtonDisplay] = useState("none");
+
+    const [wrapperDisplay, setWrapperDisplay] = useState("");
+    const [productSectionDisplay, setProductSectionDisplay] = useState("none");
+
+    const [productList, setProductList] = useState([]);
 
     const onUploadBoxClick = useCallback(() => {
         const fileInput = fileInputRef.current;
@@ -48,12 +54,13 @@ export default function Page() {
             formData.append("description", description);
             formData.append("image", image);
             const url = server + "/imageSearch";
+            setWrapperDisplay("none");
             axios.post(
                 url, formData,
                 { headers: { "Content-Type": "multipart/form-data" } }
             ).then(res => {
-                window.location.href = "/page5_result";
-                console.log(res)
+                setProductSectionDisplay("block");
+                setProductList(res.data.products);
             }).catch(err => {
                 console.error(err);
             });
@@ -62,7 +69,7 @@ export default function Page() {
 
     return (
         <section className="wrapper">
-            <div className="wrapper">
+            <div className="wrapper" style={{ display: wrapperDisplay }}>
                 <div className="upload-box" onClick={onUploadBoxClick}>
                     <input
                         type="file"
@@ -106,6 +113,11 @@ export default function Page() {
                         >Refresh</button>
                     </div>
                 </div>
+            </div>
+
+            <div id="productSection" className="content" style={{ display: productSectionDisplay }}>
+                <h1>Top 5 Search Results</h1>
+                <ProductList productList={productList} />
             </div>
         </section>
     )
