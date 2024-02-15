@@ -63,6 +63,8 @@ export default function Page() {
 
     const [productList, setProductList] = useState([]);
 
+    const [vis, setVis] = useState("");
+
     const onFormSubmit = useCallback(() => {
         const videoUrl = linkInputRef.current?.value;
         const videoQuery = searchInputRef.current?.value;
@@ -80,6 +82,7 @@ export default function Page() {
             { headers: { "Content-Type": "application/json" } }
         ).then(res => {
             setFormDisplay("none");
+            setVis(res.data.visualization);
             setMoments(res.data.selectedMoments);
             setMomentsDisplay("");
             console.log(res);
@@ -142,6 +145,7 @@ export default function Page() {
                 >Search</button>
             </div>
             <div style={{ display: momentsDisplay }}>
+                <img src={vis} alt="visualization"/>
                 <MomentList moments={moments} selected={selected} setSelected={setSelected} />
                 <button
                     onClick={onMomentSubmit}
