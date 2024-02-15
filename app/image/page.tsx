@@ -1,7 +1,7 @@
 "use client";
 
 import "./style.css";
-import ProductList from "../products/ProductList";
+import ProductList from "../ProductList";
 import React, { useCallback, useState, useRef } from "react";
 import axios from "axios";
 
@@ -38,33 +38,34 @@ export default function Page() {
         if (!file) return;
 
         const img = imgRef.current;
-        if (img) {
-            img.src = URL.createObjectURL(file);
-            img.style.display = "block";
-            img.onload = onImgLoad
-        }
+
+        if (!img) return;
+
+        img.src = URL.createObjectURL(file);
+        img.style.display = "block";
+        img.onload = onImgLoad;
     }, [onImgLoad]);
 
     const onSearchButtonClick = useCallback(() => {
         var description = searchInputRef.current?.value;
         var image = fileInputRef.current?.files?.[0];
 
-        if (description && image) {
-            let formData = new FormData();
-            formData.append("description", description);
-            formData.append("image", image);
-            const url = server + "/imageSearch";
-            setWrapperDisplay("none");
-            axios.post(
-                url, formData,
-                { headers: { "Content-Type": "multipart/form-data" } }
-            ).then(res => {
-                setProductSectionDisplay("block");
-                setProductList(res.data.products);
-            }).catch(err => {
-                console.error(err);
-            });
-        }
+        if (!(description && image)) return;
+
+        let formData = new FormData();
+        formData.append("description", description);
+        formData.append("image", image);
+        const url = server + "/imageSearch";
+        setWrapperDisplay("none");
+        axios.post(
+            url, formData,
+            { headers: { "Content-Type": "multipart/form-data" } }
+        ).then(res => {
+            setProductSectionDisplay("block");
+            setProductList(res.data.products);
+        }).catch(err => {
+            console.error(err);
+        });
     }, []);
 
     return (
@@ -120,5 +121,5 @@ export default function Page() {
                 <ProductList productList={productList} />
             </div>
         </section>
-    )
+    );
 }

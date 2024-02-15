@@ -1,7 +1,7 @@
 "use client";
 
 import "./style.css";
-import ProductList from "../products/ProductList";
+import ProductList from "../ProductList";
 import React, { useCallback, useState, useRef } from "react";
 import axios from "axios";
 

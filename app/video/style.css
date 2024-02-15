@@ -880,13 +880,13 @@ body {
     background: #d3d1ea;
 }
 
-form {
+.form {
     width: 450px;
     padding: 30px;
     border-radius: 5px;
 }
 
-form header {
+.form header {
     text-align: center;
     font-size: 22px;
     font-weight: 500;
@@ -894,7 +894,7 @@ form header {
     color: #695CFE;
 }
 
-form .url-input {
+.form .url-input {
     margin: 30px 0;
 }
 
@@ -942,7 +942,7 @@ form .url-input {
     transform: scale(1);
 }
 
-form .preview-area {
+.form .preview-area {
     border-radius: 5px;
     height: 220px;
     display: flex;
@@ -982,7 +982,7 @@ form .preview-area {
     margin-top: 25px;
 }
 
-form .download-btn {
+.form .download-btn {
     color: #fff;
     height: 53px;
     width: 100%;
@@ -994,7 +994,6 @@ form .download-btn {
     margin: 30px 0 20px 0;
     border-radius: 5px;
     background: #695CFE;
-    pointer-events: none;
 }
 
 .download-btn:hover {
@@ -1006,20 +1005,20 @@ form .download-btn {
         padding: 0 20px;
     }
 
-    form header {
+    .form header {
         font-size: 24px;
     }
 
     .url-input .field,
-    form .download-btn {
+    .form .download-btn {
         height: 45px;
     }
 
-    form .download-btn {
+    .form .download-btn {
         font-size: 15px;
     }
 
-    form .preview-area {
+    .form .preview-area {
         height: 130px;
     }
 
